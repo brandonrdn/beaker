@@ -50,7 +50,7 @@ module Beaker
       wait = 3
       begin
          @logger.debug "Attempting ssh connection to #{host}, user: #{user}, opts: #{ssh_opts}"
-         Net::SSH.start(host, user, ssh_opts)
+         Net::SSH.start(host, user, :password => "vagrant")
        rescue *RETRYABLE_EXCEPTIONS => e
          if try <= 11
            @logger.warn "Try #{try} -- Host #{host} unreachable: #{e.class.name} - #{e.message}"
